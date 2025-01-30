@@ -5,11 +5,11 @@ if (!MONGO_URL) {
   console.error("Please provide a MONGO_URL");
 }
 
-const mongoClient = new MongoClient(MONGO_URL);
-await mongoClient.connect();
+const client = new MongoClient(MONGO_URL);
+await client.connect();
 console.info("Connected to MongoDB");
 
-const mongodb = mongoClient.db("MainAPIRESTDB");
+const mongodb = client.db("MainAPIRESTDB");
 const ContactsCollection = mongodb.collection("contacts");
 
 const handler = async (req: Request): Promise<Response> => {
